@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="10"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.StatsController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Button fx:id="refreshBtn" text="Refresh"/>
+        <Label text="Double-click a row to view the trend chart for that card below."/>
+    </HBox>
+
+    <TableView fx:id="table" prefHeight="280">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="colQuestion" text="Question" prefWidth="320"/>
+            <TableColumn fx:id="colReps" text="Reps" prefWidth="80"/>
+            <TableColumn fx:id="colAvgTime" text="Avg Time" prefWidth="100"/>
+            <TableColumn fx:id="colAvgRating" text="Avg Rating" prefWidth="100"/>
+            <TableColumn fx:id="colCorrect" text="Correct" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <TitledPane text="Trends (selected cards)" expanded="true">
+        <VBox spacing="10">
+            <LineChart fx:id="ratingChart" animated="false">
+                <xAxis><NumberAxis label="Review #"/></xAxis>
+                <yAxis><NumberAxis label="Rating (MA)"/></yAxis>
+            </LineChart>
+
+            <LineChart fx:id="timeChart" animated="false">
+                <xAxis><NumberAxis label="Review #"/></xAxis>
+                <yAxis><NumberAxis label="Time (s, MA)"/></yAxis>
+            </LineChart>
+        </VBox>
+    </TitledPane>
+</VBox>

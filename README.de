@@ -1,0 +1,93 @@
+ReLern (SRS FX) — SM‑2‑basiertes Desktop‑Lernkarten‑Tool
+
+•	JavaFX‑Desktop‑App + MySQL‑Persistenz: vollständiger Zyklus Karten → Wiederholen → Statistik → CSV Import/Export
+•	Kernalgorithmus SM‑2 mit EF‑Untergrenze ≥ 1,3 und sanfter Anpassung für stabile Intervalle
+•	Saubere Datentrennung: Plan (Soll) vs. Ist (Logs) → klare Abfragen, einfache Auswertungen
+•	Ziel: rechtzeitige Wiederholung, langfristiges Behalten, messbarer Fortschritt
+
+
+Inhaltsverzeichnis
+1.	Demo
+2.	Funktionsübersicht (mit Screenshots)
+3.	Kern‑Design & Algorithmus
+4.	Technik‑Stack
+5.	Schnellstart
+6.	Roadmap
+7.	FAQ
+8.	Lizenz & Kontakt
+9.	Repository‑Organisation (Empfehlung)
+10.	TODO (für dieses Repository)
+
+
+1+2 Demo
+Video (≈10 Min.): Platzhalter → Ersetze nach Upload: Demo ansehen (https://your.video.link)
+PPT (Kurzfassung/Handout): Platzhalter →  docs/slides/Lernkarten mit verteilten Wiederholungen-IHK.pdf
+
+Funktionsübersicht (mit Screenshots)
+1) Kartenverwaltung (Cards): Neu anlegen / Liste / Löschen; automatisch in Plan übernommen.
+Screenshots: docs/images/Kart.png,   docs/images/Karterstellen.png
+
+2) Wiederholen (Review): Frage → Antwort → Bewertung 0–5; Timer/Pause; Notizen.
+Screenshot: docs/images/Wiederholungsplan.png
+
+3) Statistik (Statistics): Reps, Ø‑Zeit, Ø‑Rating, Korrekt‑Quote; Trends (gleitender Durchschnitt).
+Screenshot: docs/images/Statistik.png
+
+4) CSV Import/Export: Export/Import von Karten, Plänen oder Logs als CSV.
+
+
+Kern‑Design & Algorithmus
+1) SM‑2 (Kurzfassung)
+•	Rating 0–5: <3 → repeats=0, Intervall 1 Tag; ≥3 → 1.Tag, 6 Tage, danach interval = round(prevInterval × EF)
+•	Stabilität: EF‑Untergrenze = 1,3 + sanfte Anpassung
+•	Ziel: realistische Abstände entlang der Vergessens-kurve
+2) Datenmodell: Plan vs. Ist
+•	review_plan: Wiederholungsplan
+•	review_statistic: tatsächliche Logs
+•	Vorteile: klare Verantwortlichkeiten, einfache Abfragen/Aggregation (pro Karte, Zeitraum)
+Engineering‑Aspekte: DAO + HikariCP; testbarer CSV‑Fluss und Persistenz.
+
+3) Technik‑Stack
+•	Java 17+, JavaFX (Desktop‑UI)
+•	MySQL (JDBC / HikariCP)
+•	Maven (javafx-maven-plugin)
+•	CSV‑I/O, Logging (SLF4J …)
+
+
+Schnellstart
+Voraussetzungen: JDK 17+ und MySQL.
+1. Klonen:
+https://github.com/junli2803/Lernkarten-mit-verteilten-Wiederholungen-IHK.git
+cd Lernkarten-mit-verteilten-Wiederholungen-IHK
+2. Datenbank konfigurieren:
+db.url=jdbc:mysql://localhost:3006/recallloop?serverTimezone=Europe/Berlin&useSSL=false&allowPublicKeyRetrieval=true
+db.username=root
+db.password=root
+3. Start (JavaFX):
+mvn clean javafx:run
+
+Roadmap
+•	Tags/Suche/Filter
+•	Erweiterte Analytics (Tag/Woche/Monat)
+•	Mobile‑Client & Cloud‑Sync
+FAQ
+Warum nicht nur In‑Memory‑DB? Realistischere Tests mit MySQL (Dialekt/Indices/Transaktionen).
+Warum EF‑Untergrenze 1,3? Verhindert zu kurze Intervalle und instabile Abstände.
+Lizenz & Kontakt
+License: MIT (LICENSE hinzufügen)
+Autor: Jun Li (Suche in Deutschland)
+Kontakt: junli81@gmx.de
+
+
+Repository‑Organisation (Empfehlung)
+├─ docs/
+│  ├─ images/
+│  │  ├─ CSV_export.png
+│  │  ├─ Wiederholungsplan.png
+│  │  ├─ Karterstellen.png
+│  │  └─ Statistik.png
+│  └─ slides/
+│     └─ Lernkarten mit verteilten Wiederholungen-IHK.pdf
+├─ src/...
+├─ README.md
+└─ LICENSE

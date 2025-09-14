@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="10"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.CardsController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="10">
+        <Button fx:id="refreshButton" text="Refresh"/>
+        <Button fx:id="addButton" text="New Card"/>
+    </HBox>
+
+    <TableView fx:id="table" prefHeight="500">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="colQuestion" text="Question" prefWidth="300"/>
+            <TableColumn fx:id="colAnswer" text="Answer" prefWidth="300"/>
+            <TableColumn fx:id="colCreatedAt" text="Created On" prefWidth="120"/>
+            <TableColumn fx:id="colActions" text="Actions" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>
+
+

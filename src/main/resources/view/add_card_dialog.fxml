@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.AddCardDialogController">
+    <content>
+        <GridPane hgap="1" vgap="1" prefWidth="560" styleClass="dialog">
+
+            <Label text="Question:" prefWidth="100" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="questionField"       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Answer:"   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextArea fx:id="answerArea" prefRowCount="5" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        </GridPane>
+    </content>
+    <buttonTypes>
+        <ButtonType text="OK" buttonData="OK_DONE"/>
+        <ButtonType text="Cancel" buttonData="CANCEL_CLOSE"/>
+    </buttonTypes>
+</DialogPane>
+

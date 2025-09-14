@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="10"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.ImportExportController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="8">
+        <Button fx:id="btnExport" text="Export CSV" onAction="#onExport"/>
+        <Button fx:id="btnImport" text="Import CSV (Replace All Data)" onAction="#onImport"/>
+        <Label fx:id="status" text=""/>
+    </HBox>
+
+    <TextArea fx:id="logArea" prefRowCount="18" wrapText="true"/>
+</VBox>

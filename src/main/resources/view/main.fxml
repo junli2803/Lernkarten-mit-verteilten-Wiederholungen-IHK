@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+
+<?import javafx.scene.Scene?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.MainController"
+            prefWidth="900" prefHeight="600"
+            minWidth="800" minHeight="500">
+
+    <stylesheets>
+        <String fx:value="@/app.css"/>
+<!--        <Scene stylesheets="@/app.css"/>-->
+    </stylesheets>
+
+    <top>
+        <ToolBar>
+            <Label text="SRS FX" styleClass="title" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button text="About" onAction="#showAbout" />
+        </ToolBar>
+    </top>
+
+    <center>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+            <Tab fx:id="cardsTab" text="Cards">
+                <fx:include source="cards.fxml"/>
+            </Tab>
+
+            <Tab fx:id="reviewTab" text="Review">
+                <!-- Give the include an fx:id so the parent controller can inject the review controller -->
+                <fx:include source="review.fxml" fx:id="reviewView"/>
+            </Tab>
+
+            <Tab fx:id="statsTab" text="Statistics">
+                <fx:include source="stats.fxml"/>
+            </Tab>
+
+            <Tab fx:id="imexTab" text="Import/Export">
+                <fx:include source="import_export.fxml"/>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>
