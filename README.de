@@ -36,7 +36,7 @@ Screenshot: docs/images/Statistik.png
 4) CSV Import/Export: Export/Import von Karten, Plänen oder Logs als CSV.
 
 
-Kern‑Design & Algorithmus
+3 Kern‑Design & Algorithmus
 1) SM‑2 (Kurzfassung)
 •	Rating 0–5: <3 → repeats=0, Intervall 1 Tag; ≥3 → 1.Tag, 6 Tage, danach interval = round(prevInterval × EF)
 •	Stabilität: EF‑Untergrenze = 1,3 + sanfte Anpassung
@@ -47,14 +47,14 @@ Kern‑Design & Algorithmus
 •	Vorteile: klare Verantwortlichkeiten, einfache Abfragen/Aggregation (pro Karte, Zeitraum)
 Engineering‑Aspekte: DAO + HikariCP; testbarer CSV‑Fluss und Persistenz.
 
-3) Technik‑Stack
+4 Technik‑Stack
 •	Java 17+, JavaFX (Desktop‑UI)
 •	MySQL (JDBC / HikariCP)
 •	Maven (javafx-maven-plugin)
 •	CSV‑I/O, Logging (SLF4J …)
 
 
-Schnellstart
+5 Schnellstart
 Voraussetzungen: JDK 17+ und MySQL.
 1. Klonen:
 https://github.com/junli2803/Lernkarten-mit-verteilten-Wiederholungen-IHK.git
@@ -66,20 +66,22 @@ db.password=root
 3. Start (JavaFX):
 mvn clean javafx:run
 
-Roadmap
+6 Roadmap
 •	Tags/Suche/Filter
 •	Erweiterte Analytics (Tag/Woche/Monat)
 •	Mobile‑Client & Cloud‑Sync
-FAQ
+
+7 FAQ
 Warum nicht nur In‑Memory‑DB? Realistischere Tests mit MySQL (Dialekt/Indices/Transaktionen).
 Warum EF‑Untergrenze 1,3? Verhindert zu kurze Intervalle und instabile Abstände.
-Lizenz & Kontakt
+
+8 Lizenz & Kontakt
 License: MIT (LICENSE hinzufügen)
 Autor: Jun Li (Suche in Deutschland)
 Kontakt: junli81@gmx.de
 
 
-Repository‑Organisation (Empfehlung)
+9 Repository‑Organisation (Empfehlung)
 ├─ docs/
 │  ├─ images/
 │  │  ├─ CSV_export.png
